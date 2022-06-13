@@ -1,0 +1,55 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+// Animation
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin rotate-infinite() {
+  animation: rotation 1s infinite linear;
+}
+
+.rotate-infinite {
+  @include rotate-infinite();
+}
+
+:root {
+  --primary: #fe2c55;
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
+  --default-search-width: 361px;
+  --text-color-dark: rgba(22, 24, 35, 1);
+  --text-color-back: rgba(0 0 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  color: var(--text-color-dark, rgba(22, 24, 35, 1));
+}
+
+a,
+button,
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}

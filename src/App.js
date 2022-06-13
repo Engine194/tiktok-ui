@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { isEmpty, isNull, isUndefined } from 'lodash';
+
+import { publicRoutes } from '~/routes';
+import { DefaultLayout } from '~/components/Layouts';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {!isEmpty(publicRoutes) &&
+            publicRoutes.map((publicRoute, index) => {
+              const publicLayout = publicRoute?.layout;
+              let Layout;
+              switch (true) {
+                case !isEmpty(publicLayout):
+                  Layout = publicRoute.layout;
+                  break;
+                case isNull(publicLayout):
+                  Layout = Fragment;
+                  break;
+                case isUndefined(publicLayout):
+                  Layout = DefaultLayout;
+                  break;
+                default:
+                  Layout = DefaultLayout;
+                  break;
+              }
+              const ComponentPage = publicRoute.component;
+              return <Route key={index} path={publicRoute.path} element={<Layout children={<ComponentPage />} />} />;
+            })}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
