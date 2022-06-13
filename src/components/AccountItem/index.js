@@ -1,10 +1,9 @@
-import classNames from 'classnames/bind';
 import { CircleCheckIcon } from '~/assets/images';
+import { useClassnames } from '~/hooks';
 import styles from './AccountItem.module.scss';
 
-const cx = classNames.bind(styles);
-
 function AccountItem() {
+  const cx = useClassnames({ styles });
   return (
     <div className={cx('wrapper')}>
       <span className={cx('avater-wrapper')}>

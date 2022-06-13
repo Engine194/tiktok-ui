@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import classNames from 'classnames/bind';
 import { isEmpty } from 'lodash';
 import Tippy from '@tippyjs/react/headless';
 
-import { CloseIcon, LoadingIconSpin, LogoIcon, SearchIcon } from '~/assets/images';
+import { CloseIcon, LoadingIconSpin, LogoIcon, PlusIcon, SearchIcon } from '~/assets/images';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-
-const cx = classNames.bind(styles);
+import Button from '~/components/Button';
+import { useClassnames } from '~/hooks';
 
 function Header() {
+  const cx = useClassnames({ styles });
   const [searchResult, setSearchResult] = useState([]);
   const [popperVisible, setPopperVisible] = useState(false);
   const [searchInput, setSearchInput] = useState('');
@@ -72,7 +72,13 @@ function Header() {
             </form>
           </Tippy>
         </div>
-        <div className={cx('header-actions')}></div>
+        <div className={cx('header-actions')}>
+          <Button secondary sharpen className={cx('upload-button')}>
+            <PlusIcon className={cx('upload-icon')} />
+            <span>Upload</span>
+          </Button>
+          <Button primary>Log in</Button>
+        </div>
       </div>
     </header>
   );

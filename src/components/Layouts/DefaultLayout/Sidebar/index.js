@@ -1,10 +1,9 @@
-import classNames from 'classnames/bind';
-
+import { useClassnames } from '~/hooks';
 import styles from './Sidebar.module.scss';
 
-const cx = classNames.bind(styles);
-
 function Sidebar() {
+  const cx = useClassnames({ styles });
+
   return <aside className={cx('wrapper')}>Sidebar</aside>;
 }
 

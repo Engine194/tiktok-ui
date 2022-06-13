@@ -113,6 +113,21 @@
   * Start Group action buttons
   */
 
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.upload-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 8px;
+}
+
+.upload-button {
+  min-width: 110px;
+}
+
 /**
  * End Group action buttons
  */
