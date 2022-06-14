@@ -4,3 +4,7 @@ export { default as CloseIcon } from './CloseIcon';
 export { default as LoadingIconSpin } from './LoadingIconSpin';
 export { default as CircleCheckIcon } from './CircleCheckIcon';
 export { default as PlusIcon } from './PlusIcon';
+export { default as ElipsisVerticalIcon } from './ElipsisVerticalIcon';
+export { default as AlphabetIcon } from './AlphabetIcon';
+export { default as QuestionOutlinedIcon } from './QuestionOutlinedIcon';
+export { default as KeyboardIcon } from './KeyboardIcon';

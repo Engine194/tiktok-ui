@@ -1,0 +1,23 @@
+div.menu-list {
+  width: var(--default-menu-items-width, 224px);
+
+  .menu-item {
+    margin-left: 0;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 0;
+    font-weight: 600;
+
+    & > div:first-child {
+      justify-content: flex-start;
+    }
+
+    &:hover {
+      background: rgba(22, 24, 35, 0.03) none repeat scroll 0% 0%;
+    }
+  }
+}
+
+.menu-popper {
+  padding-bottom: 8px;
+}

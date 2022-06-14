@@ -124,8 +124,15 @@
   margin-right: 8px;
 }
 
-.upload-button {
+button.upload-button {
   min-width: 110px;
+  padding: 0 16px;
+}
+
+.more-info-button {
+  margin-left: 16px;
+  cursor: pointer;
+  padding: 0 4px;
 }
 
 /**

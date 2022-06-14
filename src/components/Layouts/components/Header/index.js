@@ -2,12 +2,46 @@ import { useState } from 'react';
 import { isEmpty } from 'lodash';
 import Tippy from '@tippyjs/react/headless';
 
-import { CloseIcon, LoadingIconSpin, LogoIcon, PlusIcon, SearchIcon } from '~/assets/images';
+import {
+  AlphabetIcon,
+  CloseIcon,
+  ElipsisVerticalIcon,
+  KeyboardIcon,
+  LoadingIconSpin,
+  LogoIcon,
+  PlusIcon,
+  QuestionOutlinedIcon,
+  SearchIcon,
+} from '~/assets/images';
 import styles from './Header.module.scss';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { Menu, Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import { useClassnames } from '~/hooks';
+
+const menuItems = [
+  {
+    icon: AlphabetIcon,
+    title: 'Language',
+    href: '',
+    to: '',
+    subMenus: [],
+  },
+  {
+    icon: QuestionOutlinedIcon,
+    title: 'Feedback and Help',
+    href: '',
+    to: '/feedback',
+    subMenus: [],
+  },
+  {
+    icon: KeyboardIcon,
+    title: 'Keyboard shortcuts',
+    href: '',
+    to: '',
+    subMenus: [],
+  },
+];
 
 function Header() {
   const cx = useClassnames({ styles });
@@ -73,11 +107,16 @@ function Header() {
           </Tippy>
         </div>
         <div className={cx('header-actions')}>
-          <Button secondary sharpen className={cx('upload-button')}>
-            <PlusIcon className={cx('upload-icon')} />
+          <Button secondary sharpen className={cx('upload-button')} leftIcon={PlusIcon}>
+            {/* <PlusIcon className={cx('upload-icon')} /> */}
             <span>Upload</span>
           </Button>
           <Button primary>Log in</Button>
+          <Menu menuItems={menuItems}>
+            <button text className={cx('more-info-button')}>
+              <ElipsisVerticalIcon />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

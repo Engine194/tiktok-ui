@@ -10,7 +10,7 @@
   border: 1px solid transparent;
 
   & + .wrapper {
-    margin-left: 12px;
+    margin-left: 16px;
   }
 
   &.disabled {
@@ -60,7 +60,7 @@
   }
 }
 
-.text {
+.textOnly {
   color: var(--text-color-dark);
   border-color: transparent;
   background-color: transparent;
@@ -99,7 +99,7 @@
   line-height: 2.2rem;
 
   & + .small {
-    margin-left: 8px;
+    margin-left: 12px;
   }
 }
 
@@ -114,4 +114,21 @@
   & + .large {
     margin-left: 20px;
   }
+}
+
+/**
+ * Icon left and right
+ */
+.left-icon,
+.right-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.left-icon {
+  margin-right: 8px;
+}
+
+.right-icon {
+  margin-left: 8px;
 }

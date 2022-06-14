@@ -1,4 +1,4 @@
-import { isEmpty, startsWith } from 'lodash';
+import { isEmpty, isFunction, startsWith } from 'lodash';
 import { Link } from 'react-router-dom';
 import { useClassnames } from '~/hooks';
 import styles from './Button.module.scss';
@@ -8,7 +8,7 @@ function Button({
   href,
   primary,
   secondary,
-  text,
+  textOnly,
   rounded,
   sharpen,
   outlined,
@@ -17,6 +17,8 @@ function Button({
   large,
   disabled,
   children,
+  leftIcon,
+  rightIcon,
   ...props
 }) {
   const cx = useClassnames({ styles });
@@ -40,11 +42,34 @@ function Button({
     });
   }
 
+  const renderLeftIcon = () => {
+    console.log('leftIcon...', leftIcon);
+    if (isFunction(leftIcon)) {
+      const Icon = leftIcon;
+      return (
+        <span className={cx('left-icon')}>
+          <Icon />
+        </span>
+      );
+    }
+  };
+
+  const renderRightIcon = () => {
+    if (isFunction(rightIcon)) {
+      const Icon = rightIcon;
+      return (
+        <span className={cx('right-icon')}>
+          <Icon />
+        </span>
+      );
+    }
+  };
+
   const classes = cx('wrapper', {
     primary,
     secondary,
     outlined,
-    text,
+    textOnly,
     rounded,
     sharpen,
     small,
@@ -53,8 +78,12 @@ function Button({
     disabled,
   });
   return (
-    <RenderedComponent {..._props} className={`${_props?.className} ${classes}`}>
-      <div className={cx('content-button')}>{children}</div>
+    <RenderedComponent {..._props} className={`${classes} ${_props?.className}`}>
+      <div className={cx('content-button')}>
+        {renderLeftIcon()}
+        {children}
+        {renderRightIcon()}
+      </div>
     </RenderedComponent>
   );
 }
