@@ -128,7 +128,7 @@ function Header() {
           </Button>
           <Button primary>Log in</Button>
           <Menu menuItems={menuItems} onChange={handleSelectMenu}>
-            <button text className={cx('more-info-button')}>
+            <button className={cx('more-info-button')}>
               <ElipsisVerticalIcon />
             </button>
           </Menu>
