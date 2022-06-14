@@ -8,3 +8,4 @@ export { default as ElipsisVerticalIcon } from './ElipsisVerticalIcon';
 export { default as AlphabetIcon } from './AlphabetIcon';
 export { default as QuestionOutlinedIcon } from './QuestionOutlinedIcon';
 export { default as KeyboardIcon } from './KeyboardIcon';
+export { default as BackIcon } from './BackIcon';

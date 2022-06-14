@@ -4,7 +4,7 @@ div.menu-list {
   .menu-item {
     margin-left: 0;
     width: 100%;
-    padding: 11px 16px;
+    padding: 9px 16px;
     border-radius: 0;
     font-weight: 600;
 
@@ -20,4 +20,32 @@ div.menu-list {
 
 .menu-popper {
   padding-bottom: 8px;
+}
+
+.menu-header {
+  position: relative;
+  height: 50px;
+  margin-top: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button {
+  cursor: pointer;
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.back-icon {
+  margin-left: 16px;
+}
+
+.menu-title {
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
 }

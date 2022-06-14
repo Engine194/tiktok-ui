@@ -22,10 +22,22 @@ import { useClassnames } from '~/hooks';
 const menuItems = [
   {
     icon: AlphabetIcon,
-    title: 'Language',
+    title: 'English',
     href: '',
     to: '',
-    subMenus: [],
+    children: {
+      title: 'Language',
+      data: [
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+      ],
+    },
   },
   {
     icon: QuestionOutlinedIcon,
@@ -59,6 +71,10 @@ function Header() {
       return next;
     });
     setSearchInput('');
+  };
+
+  const handleSelectMenu = ({ menuItem }) => {
+    console.log('menuItem...', menuItem);
   };
 
   return (
@@ -108,11 +124,10 @@ function Header() {
         </div>
         <div className={cx('header-actions')}>
           <Button secondary sharpen className={cx('upload-button')} leftIcon={PlusIcon}>
-            {/* <PlusIcon className={cx('upload-icon')} /> */}
             <span>Upload</span>
           </Button>
           <Button primary>Log in</Button>
-          <Menu menuItems={menuItems}>
+          <Menu menuItems={menuItems} onChange={handleSelectMenu}>
             <button text className={cx('more-info-button')}>
               <ElipsisVerticalIcon />
             </button>

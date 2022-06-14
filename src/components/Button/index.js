@@ -43,7 +43,6 @@ function Button({
   }
 
   const renderLeftIcon = () => {
-    console.log('leftIcon...', leftIcon);
     if (isFunction(leftIcon)) {
       const Icon = leftIcon;
       return (
