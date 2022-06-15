@@ -8,6 +8,10 @@ div.menu-list {
     border-radius: 0;
     font-weight: 600;
 
+    &.separation {
+      border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+
     & > div:first-child {
       justify-content: flex-start;
     }

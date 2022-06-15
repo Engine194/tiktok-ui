@@ -5,14 +5,11 @@ import styles from './Menu.module.scss';
 
 function MenuItem({ menuItem, onClick }) {
   const cx = useClassnames({ styles });
+  const classes = cx('menu-item', {
+    separation: menuItem?.separation,
+  });
   return (
-    <Button
-      className={cx('menu-item')}
-      onClick={onClick}
-      leftIcon={menuItem?.icon}
-      to={menuItem?.to}
-      href={menuItem?.href}
-    >
+    <Button className={classes} onClick={onClick} leftIcon={menuItem?.icon} to={menuItem?.to} href={menuItem?.href}>
       {menuItem?.title}
     </Button>
   );

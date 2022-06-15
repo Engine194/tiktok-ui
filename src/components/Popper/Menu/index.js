@@ -40,6 +40,7 @@ function Menu({ menuItems = [], onChange, children }) {
       onHide={handleBackFirstMenu}
       interactive
       delay={[0, 700]}
+      offset={[20, 12]}
       placement="bottom-end"
       render={(attrs) => {
         return (
