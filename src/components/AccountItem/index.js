@@ -1,13 +1,14 @@
-import { CircleCheckIcon } from '~/assets/images';
-import { useClassnames } from '~/hooks';
 import styles from './AccountItem.module.scss';
+import { CircleCheckIcon } from '~/components/Icons';
+import { useClassnames } from '~/hooks';
+import Image from '~/components/Image';
 
 function AccountItem() {
   const cx = useClassnames({ styles });
   return (
     <div className={cx('wrapper')}>
       <span className={cx('avater-wrapper')}>
-        <img className={cx('item-avatar')} src="" alt="avatar" />
+        <Image className={cx('item-avatar')} src="" alt="avatar" />
       </span>
       <div className={cx('infor-wrapper')}>
         <h4 className={cx('title-wrapper')}>

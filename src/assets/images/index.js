@@ -1,17 +1,5 @@
-export { default as LogoIcon } from './LogoIcon';
-export { default as SearchIcon } from './SearchIcon';
-export { default as CloseIcon } from './CloseIcon';
-export { default as LoadingIconSpin } from './LoadingIconSpin';
-export { default as CircleCheckIcon } from './CircleCheckIcon';
-export { default as PlusIcon } from './PlusIcon';
-export { default as ElipsisVerticalIcon } from './ElipsisVerticalIcon';
-export { default as AlphabetIcon } from './AlphabetIcon';
-export { default as QuestionOutlinedIcon } from './QuestionOutlinedIcon';
-export { default as KeyboardIcon } from './KeyboardIcon';
-export { default as BackIcon } from './BackIcon';
-export { default as PaperFlyIcon } from './PaperFlyIcon';
-export { default as InboxIcon } from './InboxIcon';
-export { default as UserLinkIcon } from './UserLinkIcon';
-export { default as StyleLinkIcon } from './StyleLinkIcon';
-export { default as SettingIcon } from './SettingIcon';
-export { default as LogoutIcon } from './LogoutIcon';
+const images = {
+  noImg: require('~/assets/images/packed/png/no_img.png'),
+};
+
+export default images;

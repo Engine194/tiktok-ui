@@ -1,4 +1,4 @@
-import { BackIcon } from '~/assets/images';
+import { BackIcon } from '~/components/Icons';
 import { useClassnames } from '~/hooks';
 import styles from './Menu.module.scss';
 

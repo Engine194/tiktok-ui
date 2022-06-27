@@ -1,7 +1,7 @@
 function CloseIcon(props) {
   return (
     <svg
-      style={{ margin: '0px 12px' }}
+      style={{ margin: '0px 11px' }}
       width="16"
       height="16"
       viewBox="0 0 48 48"
