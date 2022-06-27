@@ -7,6 +7,7 @@ import HeadLessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { CloseIcon, LoadingIconSpin, SearchIcon } from '~/components/Icons';
+import * as searchService from '~/utils/api-services/search-service';
 
 function Search() {
   const cx = useClassnames({ styles });
@@ -15,18 +16,14 @@ function Search() {
   const [searchLoading, setSearchLoading] = useState(false);
 
   const fetchSearch = useCallback(
-    debounce((query) => {
+    debounce(async (query) => {
       if (!isEmpty(query)) {
         setSearchLoading(true);
-        const encodedInput = encodeURIComponent(query);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodedInput}&type=less`)
-          .then((res) => res.json())
-          .then((res) => {
-            setSearchResult(res.data);
-          })
-          .finally(() => {
-            setSearchLoading(false);
-          });
+        const response = await searchService.search({
+          query,
+        });
+        setSearchResult(response.data);
+        setSearchLoading(false);
       } else {
         setSearchResult([]);
       }
@@ -83,7 +80,7 @@ function Search() {
         />
         <div
           className={cx('reset-or-loading', { reset: !!searchInput && !searchLoading }, { loading: searchLoading })}
-          onClick={!!searchInput && !searchLoading && handleResetInput}
+          onClick={!!searchInput && !searchLoading ? handleResetInput : (e) => {}}
         >
           <CloseIcon className={cx('reset-icon')} />
           <LoadingIconSpin className={cx('loading-icon')} />
