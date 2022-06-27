@@ -1,25 +1,29 @@
+import { Link } from 'react-router-dom';
+
 import styles from './AccountItem.module.scss';
 import { CircleCheckIcon } from '~/components/Icons';
 import { useClassnames } from '~/hooks';
 import Image from '~/components/Image';
 
-function AccountItem() {
+function AccountItem({ data, onReset }) {
   const cx = useClassnames({ styles });
   return (
-    <div className={cx('wrapper')}>
+    <Link to={`/@${data.nickname}`} onClick={onReset} className={cx('wrapper')}>
       <span className={cx('avater-wrapper')}>
-        <Image className={cx('item-avatar')} src="" alt="avatar" />
+        <Image className={cx('item-avatar')} src={data.avatar} alt="avatar" />
       </span>
       <div className={cx('infor-wrapper')}>
         <h4 className={cx('title-wrapper')}>
-          <span className={cx('item-title')}>tiin.vn</span>&nbsp;
-          <span className={cx('checked-icon')}>
-            <CircleCheckIcon />
-          </span>
+          <span className={cx('item-title')}>{data.full_name}</span>&nbsp;
+          {data.tick && (
+            <span className={cx('checked-icon')}>
+              <CircleCheckIcon />
+            </span>
+          )}
         </h4>
-        <p className={cx('item-desc')}>description...</p>
+        <p className={cx('item-desc')}>{data.nickname}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 

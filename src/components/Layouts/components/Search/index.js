@@ -1,5 +1,5 @@
-import { isEmpty } from 'lodash';
-import { useState } from 'react';
+import { debounce, isEmpty } from 'lodash';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useClassnames } from '~/hooks';
 import styles from './Search.module.scss';
@@ -12,6 +12,36 @@ function Search() {
   const cx = useClassnames({ styles });
   const [searchResult, setSearchResult] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [searchLoading, setSearchLoading] = useState(false);
+
+  const fetchSearch = useCallback(
+    debounce((query) => {
+      if (!isEmpty(query)) {
+        setSearchLoading(true);
+        const encodedInput = encodeURIComponent(query);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodedInput}&type=less`)
+          .then((res) => res.json())
+          .then((res) => {
+            setSearchResult(res.data);
+          })
+          .finally(() => {
+            setSearchLoading(false);
+          });
+      } else {
+        setSearchResult([]);
+      }
+    }, 250),
+    [],
+  );
+
+  useEffect(() => {
+    fetchSearch(searchInput);
+  }, [searchInput]);
+
+  const handleResetInput = () => {
+    setSearchInput('');
+    setSearchResult([]);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,10 +64,9 @@ function Search() {
           <div className={cx('search-result')} tabIndex="-1" {...attrs}>
             <PopperWrapper>
               <div className={cx('search-title-container')}>Account</div>
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
+              {searchResult?.map((result) => {
+                return <AccountItem key={result.id} data={result} onReset={handleResetInput} />;
+              })}
             </PopperWrapper>
           </div>
         );
@@ -52,7 +81,10 @@ function Search() {
           onChange={(e) => setSearchInput(e?.target?.value)}
           placeholder="Search accounts and videos"
         />
-        <div className={cx('reset-or-loading', { reset: !!searchInput }, { loading: false })}>
+        <div
+          className={cx('reset-or-loading', { reset: !!searchInput && !searchLoading }, { loading: searchLoading })}
+          onClick={!!searchInput && !searchLoading && handleResetInput}
+        >
           <CloseIcon className={cx('reset-icon')} />
           <LoadingIconSpin className={cx('loading-icon')} />
         </div>
