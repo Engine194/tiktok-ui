@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { isEmpty, isNull, isUndefined } from 'lodash';
 
 import { publicRoutes } from '~/routes';
-import { DefaultLayout } from '~/components/Layouts';
+import { DefaultLayout } from '~/layouts';
 
 function App() {
   return (

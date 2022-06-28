@@ -22,7 +22,9 @@ import Button from '~/components/Button';
 import { useClassnames } from '~/hooks';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routesConfig from '~/config/routes';
+import config from '~/config';
+
+const { routes: routesConfig } = config;
 
 const menuItems = [
   {

@@ -3,11 +3,12 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 
-import { HeaderOnly } from '~/components/Layouts';
+import { HeaderOnly } from '~/layouts';
 import Search from '~/pages/Search';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 // Public Routes for guests
+const { routes: routesConfig } = config;
 const publicRoutes = [
   { path: routesConfig.home, component: Home },
   { path: routesConfig.following, component: Following },

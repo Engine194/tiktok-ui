@@ -7,7 +7,7 @@ import HeadLessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { CloseIcon, LoadingIconSpin, SearchIcon } from '~/components/Icons';
-import * as searchService from '~/utils/api-services/search-service';
+import * as searchService from '~/utils/services/search';
 
 function Search() {
   const cx = useClassnames({ styles });
