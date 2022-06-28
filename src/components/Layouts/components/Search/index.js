@@ -14,6 +14,7 @@ function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [searchLoading, setSearchLoading] = useState(false);
+  const [showResult, setShowResult] = useState(false);
 
   const fetchSearch = useCallback(
     debounce(async (query) => {
@@ -35,6 +36,13 @@ function Search() {
     fetchSearch(searchInput);
   }, [searchInput]);
 
+  const handleChangeInput = (e) => {
+    const searchValue = e.target.value;
+    if (!searchValue.startsWith(' ')) {
+      setSearchInput(searchValue);
+    }
+  };
+
   const handleResetInput = () => {
     setSearchInput('');
     setSearchResult([]);
@@ -43,27 +51,21 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Todos submit query
-
-    // example
-    setSearchResult((prev) => {
-      const next = [...prev, searchInput];
-      return next;
-    });
-    setSearchInput('');
   };
   return (
     <HeadLessTippy
-      onClickOutside={() => setSearchResult([])}
-      visible={!isEmpty(searchResult)}
+      onClickOutside={() => setShowResult(false)}
+      visible={showResult && !isEmpty(searchResult)}
       interactive={true}
       render={(attrs) => {
         return (
           <div className={cx('search-result')} tabIndex="-1" {...attrs}>
             <PopperWrapper>
               <div className={cx('search-title-container')}>Account</div>
-              {searchResult?.map((result) => {
-                return <AccountItem key={result.id} data={result} onReset={handleResetInput} />;
-              })}
+              {!isEmpty(searchResult) &&
+                searchResult?.map((result) => {
+                  return <AccountItem key={result.id} data={result} onReset={handleResetInput} />;
+                })}
             </PopperWrapper>
           </div>
         );
@@ -75,8 +77,9 @@ function Search() {
           type="text"
           spellCheck={false}
           value={searchInput}
-          onChange={(e) => setSearchInput(e?.target?.value)}
+          onChange={handleChangeInput}
           placeholder="Search accounts and videos"
+          onFocus={() => setShowResult(true)}
         />
         <div
           className={cx('reset-or-loading', { reset: !!searchInput && !searchLoading }, { loading: searchLoading })}
@@ -86,7 +89,7 @@ function Search() {
           <LoadingIconSpin className={cx('loading-icon')} />
         </div>
         <span className={cx('span-spliter')} />
-        <button type="submit" className={cx('button-search')}>
+        <button type="submit" className={cx('button-search')} onMouseDown={(e) => e.preventDefault()}>
           <SearchIcon className={cx('search-icon')} />
         </button>
       </form>

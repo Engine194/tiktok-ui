@@ -8,7 +8,7 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import MenuHeader from './MenuHeader';
 
-function Menu({ menuItems = [], onChange, children }) {
+function Menu({ menuItems = [], hideOnClick = false, onChange, children }) {
   const cx = useClassnames({ styles });
   const [menuHistoryItems, setMenuHistoryItems] = useState([{ data: menuItems }]);
   const currentMenuItems = menuHistoryItems[menuHistoryItems.length - 1];
@@ -38,6 +38,7 @@ function Menu({ menuItems = [], onChange, children }) {
     <Tippy
       onClickOutside={handleBackFirstMenu}
       onHide={handleBackFirstMenu}
+      hideOnClick={hideOnClick}
       interactive
       delay={[0, 700]}
       offset={[20, 12]}

@@ -22,6 +22,7 @@ import Button from '~/components/Button';
 import { useClassnames } from '~/hooks';
 import Image from '~/components/Image';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 
 const menuItems = [
   {
@@ -104,9 +105,9 @@ function Header() {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
+        <Link to={routesConfig.home} className={cx('logo')}>
           <LogoIcon alt="tiktok" width="120" height="45" />
-        </div>
+        </Link>
         <div className={cx('search')}>
           <Search />
         </div>
