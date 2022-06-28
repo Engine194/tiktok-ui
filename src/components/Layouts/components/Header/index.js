@@ -41,6 +41,94 @@ const menuItems = [
           code: 'vi-Vn',
           title: 'Tieng Viet',
         },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
+        {
+          code: 'en-En',
+          title: 'English',
+        },
+        {
+          code: 'vi-Vn',
+          title: 'Tieng Viet',
+        },
       ],
     },
   },

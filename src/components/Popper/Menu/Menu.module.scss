@@ -26,6 +26,10 @@ div.menu-list {
   padding-bottom: 8px;
 }
 
+.menu-children {
+  overflow-y: auto;
+}
+
 .menu-header {
   position: relative;
   height: 50px;
@@ -33,6 +37,7 @@ div.menu-list {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .back-button {

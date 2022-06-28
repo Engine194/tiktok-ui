@@ -48,7 +48,7 @@ function Menu({ menuItems = [], hideOnClick = false, onChange, children }) {
           <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
             <PopperWrapper className={cx('menu-popper')}>
               {menuHistoryItems?.length > 1 && <MenuHeader title={currentMenuItems?.title} onBack={handleBackMenu} />}
-              {renderItems()}
+              <div className={cx('menu-children')}>{renderItems()}</div>
             </PopperWrapper>
           </div>
         );
